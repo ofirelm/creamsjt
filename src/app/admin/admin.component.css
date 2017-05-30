@@ -1,0 +1,66 @@
+.container {
+    margin-top: 100px;
+}
+
+.toolbar button {
+    float: right;
+    margin-bottom: 50px;
+}
+
+.form-group {
+    display: inline-block;
+    width: 100%;
+}
+
+.forms {
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.forms.active{
+    display: initial;
+}
+
+.forms.form-container{
+    display: none;
+}
+
+.form-close{
+    background: url('../../assets/close.svg') no-repeat center;
+    background-size: 24px;
+    border: 0 none;
+    outline: none;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 50px;
+    float: right;
+}
+
+.fr{
+    float: right;
+}
+
+ul.answers{
+    padding: 24px 0;
+}
+
+.delete-button{
+    background: url('../../assets/close.svg') no-repeat center;
+    background-size: 16px;
+    border: 0 none;
+    cursor: pointer;
+    float: right;
+    width:50px;
+    height: 50px;
+    outline: none;
+}
+
+.question-title{
+    float: left;
+}

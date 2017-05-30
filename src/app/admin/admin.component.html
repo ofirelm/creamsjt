@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="section">
+    <div class="toolbar">
+      <button class="btn btn-primary float-right" type="submit" (click)="toggleQuestionForm()">Add Question</button>
+    </div>
+    <table class="table table-hover">
+      <caption>Total: {{questions.length}}</caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Question</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of questions; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td>
+            <p class="question-title">{{question.title}}</p>
+          </td>
+          <td>
+            <button [id]="question._id" type="button" class="delete-button" (click)="deleteQuestion($event)"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="forms" [class.active]="questionFormVisible">
+  <div class="form-container container">
+    <button class="form-close" (click)="toggleQuestionForm()"></button>
+    <form class="form-horizontal" (ngSubmit)="addQuestion()">
+      <div class="form-group">
+        <label for="inputTitle" class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputTitle" placeholder="Title" [(ngModel)]="question.title" name="title">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputTitle" placeholder="Description" [(ngModel)]="question.description" name="description">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputVideo" class="col-sm-2 control-label">Video Url</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputVideo" placeholder="Video URL Path: ../assets/video1.mp4" [(ngModel)]="question.video"
+            name="video">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAttachment" class="col-sm-2 control-label">Attachment Url</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputAttachment" placeholder="Attachment URL Path" [(ngModel)]="question.attachment"
+            name="attachment">
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="inputOrder" class="col-sm-2 control-label">Answers</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="inputOrder" placeholder="Answer" [(ngModel)]="answer" name="answer">
+        </div>
+        <div class="col-sm-2">
+          <button type="button" class="btn btn-default" (click)="addAnswer()">Add Answer</button>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+          <ul class="answers">
+            <li *ngFor="let answer of question.answers">{{answer}}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-danger fr">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

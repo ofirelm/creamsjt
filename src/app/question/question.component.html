@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="container-inner">
+    <div class="layer layer-media">
+      <video src="{{data.video}}" controls autoplay (ended)="videoEnded()">
+        <source src="{{data.video}}" type="video/mp4" />
+      </video>
+    </div>
+    <div class="layer layer-content" [class.active]="showQuestions">
+      <p class="question-text">{{data.title}}</p>
+      <ul>
+        <li *ngFor="let answer of data.answers">
+          <div class="answer-text">{{answer}}</div>
+          <div class="answer-choicebuttons">
+            <label class="switch">
+              <input type="checkbox">
+              <div class="slider"></div>
+            </label>
+          </div>
+        </li>
+      </ul>
+      <div class="question-routebuttons">
+        <button class="btn btn-default" (click)="videoReplay()">Replay</button>
+        <button class="btn btn-primary" (click)="nextQuestion()" *ngIf="(collection.length -1) > collection.indexOf(data)">Next</button>
+        <button class="btn btn-primary" routerLink="/completed" *ngIf="(collection.length -1) <= collection.indexOf(data)">Complete</button>
+      </div>
+    </div>
+  </div>
+</div>
